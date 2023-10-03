@@ -1,0 +1,15 @@
+<%- include("header") -%>
+
+    <div class="list">
+        <% if (listItems) { %>
+            <% listItems.forEach(function(item) { %>
+                <%- include("partials/existingItem", { item: item }) %>
+            <% }) %>
+        <% } %>
+    </div>
+
+    <%- include("partials/newItem") %>
+
+    <script src="js/main.js"></script>
+
+<%- include("footer") -%>
