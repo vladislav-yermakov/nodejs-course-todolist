@@ -1,11 +1,15 @@
 import LocalStrategy from "passport-local"
-import User from "../src/models/user.js"
 import passport from "passport"
+import UserDAO from "../src/models/userDAO.js"
 
-passport.use(new LocalStrategy(
-    async function (username, password, done) {
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+},
+    async function (email, password, done) {
         try {
-            const user = await User.findOne({ where: { email: username } })
+            const user = await UserDAO.findByEmail(email)
 
             if (!user) {
                 return done(null, false, { message: 'Invalid credentials' })
@@ -28,8 +32,8 @@ passport.serializeUser(function (user, done) {
 })
 
 passport.deserializeUser(function (id, done) {
-    User
-        .findByPk(id)
+    UserDAO
+        .findById(id)
         .then(function (user) {
             done(null, user)
         })

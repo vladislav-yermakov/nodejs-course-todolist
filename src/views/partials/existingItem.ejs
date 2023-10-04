@@ -6,5 +6,6 @@
         <input type="hidden" name="id" value="<%= item.id %>" />
         <button class="update" type="button">Update</button>
         <button class="delete" type="button">Delete</button>
+        <label><%= item.createdAt.toLocaleDateString('en-US', { day: "2-digit", month: "2-digit", year: "numeric" }) %></label>
     </form>
 </div>

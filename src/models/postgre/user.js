@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize"
-import sequelize from "../../config/db.js"
+import sequelize from "../../../config/db.js"
+import Item from "./item.js"
 
 const User = sequelize.define(
     'User',
@@ -18,7 +19,7 @@ const User = sequelize.define(
         password: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
     },
     { 
         timestamps: false
@@ -29,5 +30,12 @@ const User = sequelize.define(
 User.prototype.verifyPassword = function(password) {
     return this.password === password
 }
+
+User.hasMany(Item, {
+    foreignKey: 'userId'
+})
+Item.belongsTo(User, {
+    foreignKey: 'userId'
+})
 
 export default User

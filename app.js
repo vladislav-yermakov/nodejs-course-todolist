@@ -3,11 +3,11 @@ import './config/passport.js'
 
 import bodyParser from "body-parser"
 import express from 'express'
+import session from 'express-session'
 import morgan from "morgan"
 import passport from 'passport'
-import { default as routes } from './src/routes/routes.js'
-import session from 'express-session'
 import { syncDB } from './config/db.js'
+import { default as routes } from './src/routes/routes.js'
 
 const app = express()
 
@@ -21,7 +21,7 @@ app.set('views', './src/views')
 // Public Resources
 app.use(express.static('public'))
 
-// Request parameters parsers
+// Request parsers
 app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 

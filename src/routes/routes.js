@@ -1,4 +1,5 @@
-import User from '../models/user.js'
+import ItemDAO from '../models/itemDAO.js'
+import UserDAO from '../models/userDAO.js'
 import indexRouter from './routers/indexRouter.js'
 import itemRouter from './routers/itemRouter.js'
 
@@ -17,23 +18,21 @@ export default function (app, passport) {
     }))
 
     app.post('/auth/register', async (req, res) => {
-        const user = await User.findOne({ where: { email: req.body.email } })
+        const user = await UserDAO.findByEmail(req.body.email)
 
         if (user) {
-            res.sendStatus(409).send('User with such email already exist')
+            res.status(409).send('User with such email already exist')
             return
         }
 
-        const newUser = User.build({
-            email: req.body.email, 
-            password: req.body.password
-        })
-        await newUser.save()
+        const newUser = await UserDAO.createNew(req.body.email, req.body.password)
         
-        req.login(newUser, function (err) {
+        req.login(newUser, async function (err) {
             if (err) {
                 console.log(err)
             }
+
+            await ItemDAO.insertDefaultItems(newUser.id)
 
             return res.redirect('/')
         })
