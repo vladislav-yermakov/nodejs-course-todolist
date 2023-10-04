@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>CourseToDoList</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" />
+    <link rel="stylesheet" href="css/auth.css" />
+</head>
+
+<body>
+    <main class="d-flex align-items-center justify-content-center">
+        <form action="/auth/register" method="post" width: 350px;">
+            <!-- Title -->
+            <div class="text-center">
+                <h1>Register</h1>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="form2Example1" name="email" class="form-control" />
+                <label class="form-label" for="form2Example1">Email address</label>
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+                <input type="password" id="form2Example2" name="password" class="form-control" />
+                <label class="form-label" for="form2Example2">Password</label>
+            </div>
+
+            <div class="form-outline mb-4">
+                <input type="password" id="form2Example2" class="form-control" />
+                <label class="form-label" for="form2Example2">Confirm Password</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Already have an account? <a href="/login">Log In</a></p>
+            </div>
+        </form>
+    </main>
+
+    <%- include("partials/copyright-footer") -%>
+
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"/></script>
+</body>
+
+</html>

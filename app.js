@@ -7,7 +7,7 @@ import morgan from "morgan"
 import passport from 'passport'
 import { default as routes } from './src/routes/routes.js'
 import session from 'express-session'
-import { syncDB } from './src/db/db.js'
+import { syncDB } from './config/db.js'
 
 const app = express()
 

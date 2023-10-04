@@ -1,5 +1,13 @@
-<%- include("header") -%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="utf-8">
+    <title>CourseToDoList</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+</head>
+
+<body>
     <div class="list">
         <% if (listItems) { %>
             <% listItems.forEach(function(item) { %>
@@ -9,7 +17,10 @@
     </div>
 
     <%- include("partials/newItem") %>
+    
+    <%- include("partials/copyright-footer") -%>
 
     <script src="js/main.js"></script>
+</body>
 
-<%- include("footer") -%>
+</html>
