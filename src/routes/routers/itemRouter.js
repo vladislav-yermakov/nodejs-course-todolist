@@ -1,5 +1,5 @@
 import express from 'express'
-import ItemDAO from '../../models/itemDAO.js'
+import ItemDAO from '../../models/item/itemDAO.js'
 
 const itemRouter = express.Router()
 

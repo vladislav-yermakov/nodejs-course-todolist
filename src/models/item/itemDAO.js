@@ -1,4 +1,4 @@
-import Item from './postgre/item.js'
+import Item from "./item.js"
 
 class ItemDAO {
     static async insertDefaultItems(userId) {

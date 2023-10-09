@@ -1,5 +1,5 @@
-import ItemDAO from '../models/itemDAO.js'
-import UserDAO from '../models/userDAO.js'
+import ItemDAO from '../models/item/itemDAO.js'
+import UserDAO from '../models/user/userDAO.js'
 import indexRouter from './routers/indexRouter.js'
 import itemRouter from './routers/itemRouter.js'
 
@@ -7,7 +7,7 @@ export default function (app, passport) {
     app.get('/login', (req, res) => {
         res.render('login')
     })
-    
+
     app.get('/register', (req, res) => {
         res.render('register')
     })
@@ -25,7 +25,7 @@ export default function (app, passport) {
             return
         }
 
-        const newUser = await UserDAO.createNew(req.body.email, req.body.password)
+        const newUser = await UserDAO.createNew(req.body.name, req.body.email, req.body.password)
         
         req.login(newUser, async function (err) {
             if (err) {

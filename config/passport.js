@@ -1,7 +1,6 @@
 import LocalStrategy from "passport-local"
 import passport from "passport"
-import UserDAO from "../src/models/userDAO.js"
-
+import UserDAO from "../src/models/user/userDAO.js"
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -10,13 +9,12 @@ passport.use(new LocalStrategy({
     async function (email, password, done) {
         try {
             const user = await UserDAO.findByEmail(email)
-
             if (!user) {
                 return done(null, false, { message: 'Invalid credentials' })
             }
 
-            const passVal = user.verifyPassword(password)
-            if (!passVal) {
+            const match = user.verifyPassword(password)
+            if (!match) {
                 return done(null, false, { message: 'Invalid credentials' })
             }
 

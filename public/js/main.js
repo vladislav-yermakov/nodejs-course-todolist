@@ -1,4 +1,4 @@
-document.querySelectorAll('body .existing_item > form').forEach(function (form) {
+document.querySelectorAll('body form.existing_item').forEach(function (form) {
     const itemId = form.querySelector('input[name="id"]').value
 
     const updateBtn = form.querySelector('button[class="update"]')
@@ -19,6 +19,7 @@ document.querySelectorAll('body .existing_item > form').forEach(function (form) 
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: body
         }).then(async response => {
+            console.log(response)
             if (response.ok) {
                 window.location.replace('/')
             }
@@ -34,9 +35,21 @@ document.querySelectorAll('body .existing_item > form').forEach(function (form) 
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: body
         }).then(async response => {
+            console.log(response)
             if (response.ok) {
                 window.location.replace('/')
             }
         })
+    })
+})
+
+const logoutBtn = document.querySelector('header button')
+logoutBtn.addEventListener('click', function () {
+    fetch('/auth/logout', {
+        method: 'GET'
+    }).then(async response => {
+        if (response.ok) {
+            window.location.replace('/')
+        }
     })
 })
