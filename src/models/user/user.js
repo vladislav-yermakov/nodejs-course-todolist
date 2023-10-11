@@ -59,9 +59,10 @@ User.addHook('beforeSave', async model => {
     model.passwordSalt = passSalt
     model.password = passHash
 
-    const emailHash = hash256(model.email)
+    const email = model.email
+    const emailHash = hash256(email)
     model.email = emailHash
-    model.emailEnc = encrypt(model.email)
+    model.emailEnc = encrypt(email)
 
     if (model.name) {
         model.name = encrypt(model.name)
@@ -75,11 +76,13 @@ User.addHook('beforeFind', query => {
         if (query.where.name) {
             query.where.name = encrypt(query.where.name)
         }
+
+        const email = query.where.email
         if (query.where.email) {
-            query.where.email = hash256(query.where.email)
+            query.where.email = hash256(email)
         }
         if (query.where.emailEnc) {
-            query.where.emailEnc = encrypt(query.where.email)
+            query.where.emailEnc = encrypt(email)
         }
     }
     return query
