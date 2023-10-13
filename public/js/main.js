@@ -43,6 +43,45 @@ document.querySelectorAll('body form.existing_item').forEach(function (form) {
     })
 })
 
+profileBtn = document.querySelector('#profile-btn')
+if (profileBtn) {
+    profileBtn.addEventListener('click', function () {
+        window.location.replace('/profile')
+    })
+}
+
+homeBtn = document.querySelector('#home-btn')
+if (homeBtn) {
+    homeBtn.addEventListener('click', function () {
+        window.location.replace('/')
+    })
+}
+
+updateProfileBtn = document.querySelector('#update-profile-btn')
+if (updateProfileBtn) {
+    updateProfileBtn.addEventListener('click', function () {
+        const root = document.querySelector('body main')
+        const birthdate = root.querySelector('input[name="birthdate"]').value
+        const address = root.querySelector('input[name="address"]').value
+        const info = root.querySelector('#finfo').value
+
+        const body = new URLSearchParams({
+            birthdate: birthdate,
+            address: address,
+            info: info
+        })
+
+        fetch('/profile', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: body
+        }).then(async response => {
+            if (response.ok) {
+                window.location.reload()
+            }
+        })
+    })
+}
 
 logoutBtn = document.querySelector('#logout-btn')
 if (logoutBtn) {
@@ -54,19 +93,5 @@ if (logoutBtn) {
                 window.location.replace('/')
             }
         })
-    })
-}
-
-profileBtn = document.querySelector('#profile-btn')
-if (profileBtn) {
-    profileBtn.addEventListener('click', function () {
-        window.location.replace('/profile')
-    })
-}
-
-homeBtn = document.querySelector('#home-btn')
-if (logoutBtn) {
-    homeBtn.addEventListener('click', function () {
-        window.location.replace('/')
     })
 }

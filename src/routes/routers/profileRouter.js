@@ -20,7 +20,7 @@ profileRouter.route('/')
     })
     .put(async (req, res) => {
         await UserProfileDAO.update(req.user.id, null, req.body.birthdate, req.body.address, req.body.info)
-        res.redirect('/profile')
+        res.sendStatus(200)
     })
 
 export default profileRouter

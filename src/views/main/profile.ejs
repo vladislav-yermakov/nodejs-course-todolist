@@ -47,9 +47,11 @@
         </div>
         <!-- Info -->
         <div class="form-outline mb-4">
-            <textarea id="finfo" class="form-control" rows="3" name="info" value="<%= info %>"></textarea>
+            <textarea id="finfo" class="form-control" rows="3" name="info"><%= info %></textarea>
             <label class="form-label" for="finfo">Info</label>
         </div>
+        <!-- Submit -->
+        <button id="update-profile-btn" type="button">Update</button>
     </main>
 
     <%- include("../shared/footer") %>
