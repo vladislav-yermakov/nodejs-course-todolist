@@ -7,7 +7,7 @@ const indexRouter = express.Router()
 indexRouter.get('/', async (req, res) => {
     const items = await ItemDAO.getItems(req.user.id)
     const user = await UserDAO.findById(req.user.id)
-    res.render("index", { name: user.name, listItems: items })
+    res.render("main/index", { name: user.name, listItems: items })
 })
 
 export default indexRouter

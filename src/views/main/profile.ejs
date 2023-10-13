@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>CourseToDoList</title>
+    <%- include("imports/css") %>
+</head>
+
+<body>
+
+    <header>
+        <div class="d-flex justify-content-between">
+            <button id="home-btn" type="button"><i class="fas fa-house fa-2x"></i></button>
+            <div class="align-self-center">
+                <h1>
+                    Profile
+                </h1>
+            </div>
+            <button id="logout-btn" type="button">Log Out</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Avatar -->
+        <!-- <img src="https://picsum.photos/300/300" class="img-fluid rounded-circle" -->
+        <!-- alt="Townhouses and Skyscrapers" /> -->
+        <!-- Name -->
+        <div class="form-outline mb-4">
+            <input id="fname" class="form-control" name="name" type="text" value="<%= name %>" disabled />
+            <label class="form-label" for="fname">Name</label>
+        </div>
+        <!-- Email -->
+        <div class="form-outline mb-4">
+            <input id="femail" class="form-control" name="email" type="email" value="<%= email %>" disabled />
+            <label class="form-label" for="fname">Email</label>
+        </div>
+        <!-- Birthdate -->
+        <div class="form-outline mb-4">
+            <input id="fbirthdate" class="form-control" name="birthdate" type="text" value="<%= birthdate %>" />
+            <label class="form-label" for="fname">Birthdate</label>
+        </div>
+        <!-- Address -->
+        <div class="form-outline mb-4">
+            <input id="faddress" class="form-control" name="address" type="text" value="<%= address %>" />
+            <label class="form-label" for="fname">Address</label>
+        </div>
+        <!-- Info -->
+        <div class="form-outline mb-4">
+            <textarea id="finfo" class="form-control" rows="3" name="info" value="<%= info %>"></textarea>
+            <label class="form-label" for="finfo">Info</label>
+        </div>
+    </main>
+
+    <%- include("../shared/footer") %>
+    <%- include("imports/js") %>
+
+</body>
+
+</html>

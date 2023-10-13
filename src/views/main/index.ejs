@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>CourseToDoList</title>
+    <%- include("imports/css") %>
+</head>
+
+<body>
+    
+    <header>
+        <div class="d-flex justify-content-between">
+            <button id="home-btn" type="button"><i class="fas fa-house fa-2x"></i></button>
+            <div class="align-self-center">
+                <h1>
+                    <p>Hello, <%= name %>! </p>
+                </h1>
+            </div>
+            <button id="profile-btn" type="button"><i class="fas fa-user fa-2x"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-md">
+                    <%- include("components/items/newItem") %>
+                </div>
+                <% if (listItems) { %>
+                    <% listItems.forEach(function(item) { %>
+                        <div class="col-md">
+                            <%- include("components/items/existingItem", { item: item }) %>
+                        </div>
+                    <% }) %>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+    <%- include("../shared/footer") -%>
+    <%- include("imports/js") -%>
+
+</body>
+
+</html>

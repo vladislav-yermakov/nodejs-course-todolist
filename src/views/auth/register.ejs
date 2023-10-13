@@ -1,0 +1,43 @@
+<%- include("components/prefix") %>
+
+<main class="d-flex align-items-center justify-content-center">
+    <form action="/auth/register" method="post" style="width: 350px;">
+        <!-- Title -->
+        <div class="text-center">
+            <h1>Register</h1>
+        </div>
+
+        <!-- Name input -->
+        <div class="form-outline mb-4">
+            <input type="text" id="name-form-input" name="name" class="form-control" />
+            <label class="form-label" for="name-form-input">Name</label>
+        </div>
+
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            <input type="email" id="email-form-input" name="email" class="form-control" />
+            <label class="form-label" for="email-form-input">Email address</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="pass-form-input" name="password" class="form-control" />
+            <label class="form-label" for="pass-form-input">Password</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="password" id="confirm-pass-form-input" class="form-control" />
+            <label class="form-label" for="confirm-pass-form-input">Confirm Password</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+
+        <!-- Register buttons -->
+        <div class="text-center">
+            <p>Already have an account? <a href="/login">Log In</a></p>
+        </div>
+    </form>
+</main>
+
+<%- include("components/suffix") %>

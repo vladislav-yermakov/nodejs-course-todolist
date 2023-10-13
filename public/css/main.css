@@ -14,3 +14,14 @@ footer {
     padding: 20px;
     text-align: center;
 }
+
+i {
+    height: 40px;
+    width: 40px;
+    color: black;
+    outline-color: black;
+}
+
+h1 {
+    margin: 4px;
+}

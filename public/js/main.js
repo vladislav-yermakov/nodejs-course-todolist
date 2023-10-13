@@ -43,13 +43,30 @@ document.querySelectorAll('body form.existing_item').forEach(function (form) {
     })
 })
 
-const logoutBtn = document.querySelector('header button')
-logoutBtn.addEventListener('click', function () {
-    fetch('/auth/logout', {
-        method: 'GET'
-    }).then(async response => {
-        if (response.ok) {
-            window.location.replace('/')
-        }
+
+logoutBtn = document.querySelector('#logout-btn')
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', function () {
+        fetch('/auth/logout', {
+            method: 'GET'
+        }).then(async response => {
+            if (response.ok) {
+                window.location.replace('/')
+            }
+        })
     })
-})
+}
+
+profileBtn = document.querySelector('#profile-btn')
+if (profileBtn) {
+    profileBtn.addEventListener('click', function () {
+        window.location.replace('/profile')
+    })
+}
+
+homeBtn = document.querySelector('#home-btn')
+if (logoutBtn) {
+    homeBtn.addEventListener('click', function () {
+        window.location.replace('/')
+    })
+}

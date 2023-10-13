@@ -3,9 +3,10 @@ import { DataTypes } from "sequelize"
 import sequelize from "../../../config/db.js"
 import Item from "../item/item.js"
 import { encrypt, decrypt, hash256 } from '../../../config/crypto.js'
+import UserProfile from '../user-profile/user-profile.js'
 
 const User = sequelize.define(
-    'User',
+    'user',
     {
         id: {
             type: DataTypes.INTEGER,
@@ -45,13 +46,11 @@ User.prototype.verifyPassword = async function (password) {
     return match
 }
 
-User.hasMany(Item, {
-    foreignKey: 'userId'
-})
+User.hasMany(Item, { foreignKey: 'userId' })
+Item.belongsTo(User, { foreignKey: 'userId' })
 
-Item.belongsTo(User, {
-    foreignKey: 'userId'
-})
+User.hasOne(UserProfile, { foreignKey: 'userId' })
+UserProfile.belongsTo(User, { foreignKey: 'userId' })
 
 User.addHook('beforeSave', async model => {
     const passSalt = await bcrypt.genSalt(3)
